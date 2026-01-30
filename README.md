@@ -56,11 +56,6 @@ Run reference evaluation:
 python reference_eval.py --accuracy_file path/to/preds.json --output_file out.json
 ```
 
-Upload to Hugging Face (can be run from any working directory):
-
-```bash
-python upload_hf.py
-```
 
 ### Notes
 - Paths in the scripts are research-oriented and may need adjustment to your local layout.
