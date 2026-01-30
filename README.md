@@ -2,36 +2,12 @@
 
 [![ACL 2025 Paper](https://img.shields.io/badge/ACL%202025-Paper-blue)](https://aclanthology.org/2025.findings-acl.919/)
 [![PDF](https://img.shields.io/badge/PDF-Download-red)](https://aclanthology.org/2025.findings-acl.919.pdf)
+[![HF Dataset](https://img.shields.io/badge/HF-Dataset-yellow)](https://huggingface.co/datasets/SHENJJ1017/TransparentizeCitation)
 
 This repository contains the paper, data, and research scripts for **“Transparentize the Internal and External Knowledge Utilization in LLMs with Trustworthy Citation”** (Findings of ACL 2025).
 
-## Contents
-- `../2025.findings-acl.919.pdf`: the paper PDF.
-- `../data/`: training/evaluation data plus a Hugging Face–ready split.
-- `./`: data generation, evaluation, and training utilities.
-
 ## Dataset summary (from the paper)
 The dataset is constructed from three recent RAG datasets: **CRAG**, **FRAMES**, and **SituatedFaithfulnessEval (SFE)**. Each question is paired with five retrieved documents, annotated with whether a document is ground-truth (contains the answer). The dataset is split into **GT** and **nGT** settings depending on whether a ground-truth document is present. See Section 3 of the paper for details.
-
-## Hugging Face usage
-The preprocessed split is in `../data/hf/`:
-- `train.jsonl` (from `sft.json`)
-- `validation.jsonl` (from `eval.json`)
-
-Example:
-
-```python
-from datasets import load_dataset
-
-# Use the HF-ready split in data/hf
-
-ds = load_dataset("json", data_files={
-    "train": "../data/hf/train.jsonl",
-    "validation": "../data/hf/validation.jsonl",
-})
-```
-
-If you upload this repo to the Hub, users can load the split via `data_dir="data/hf"`.
 
 ## LlamaFactory note
 `trainer.py` is intended to **replace** the `trainer.py` in LlamaFactory (path may vary by version; commonly `src/llamafactory/train/trainer.py`).
